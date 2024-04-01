@@ -21,16 +21,19 @@ const usersSchema = new mongoose.Schema({
   emailId: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   mobNum: {
     type: String,
     required: true,
     unique: true
+  },
+  password:{
+    type:String,
+    required:true,
   }
 });
 
-
-const user = mongoose.model("user",usersSchema);
+const user = mongoose.model('user', usersSchema);
 
 module.exports = user;
