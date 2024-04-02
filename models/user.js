@@ -5,11 +5,11 @@ const mongoose = require('mongoose');
 
 //schema of user structure
 const usersSchema = new mongoose.Schema({
-  _id: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    default: mongoose.Types.ObjectId // Auto-generate ID
-  },
+  // _id: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   required: true,
+  //   default: mongoose.Types.ObjectId // Auto-generate ID
+  // },
   firstName: {
     type: String,
     required: true
@@ -27,10 +27,13 @@ const usersSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true
+  },
+  password: {
+    type: String,
+    required: true
   }
 });
 
-
-const user = mongoose.model("user",usersSchema);
+const user = mongoose.model('user', usersSchema);
 
 module.exports = user;
