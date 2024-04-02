@@ -10,17 +10,17 @@ const authRouter = require('./routes/authroutes');
 //Connection to mongo database.
 connectMongoDb().then(() => {
   console.log('Mongo Db is Connected..');
-})
+});
 
 //middleware setups
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(logRequest());
 app.use(helmet());
 app.use(compression());
 
-
 //router setup
-app.use('/auth',authRouter);
+app.use('/auth', authRouter);
 app.use('/user', userRouter);
 
 //global error handler

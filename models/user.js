@@ -5,11 +5,11 @@ const mongoose = require('mongoose');
 
 //schema of user structure
 const usersSchema = new mongoose.Schema({
-  _id: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    default: mongoose.Types.ObjectId // Auto-generate ID
-  },
+  // _id: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   required: true,
+  //   default: mongoose.Types.ObjectId // Auto-generate ID
+  // },
   firstName: {
     type: String,
     required: true
@@ -21,16 +21,16 @@ const usersSchema = new mongoose.Schema({
   emailId: {
     type: String,
     required: true,
-    unique: true,
+    unique: true
   },
   mobNum: {
     type: String,
     required: true,
     unique: true
   },
-  password:{
-    type:String,
-    required:true,
+  password: {
+    type: String,
+    required: true
   }
 });
 

@@ -5,13 +5,14 @@ const jwt = require('jsonwebtoken');
 //login user
 async function userlogin(req, res) {
   try {
-    const { username, password } = req.body;
-    const user = await User.findOne({ username });
-    const passwordMatch = await bcrypt.compare(password, user.password);
+    const { emailId, password } = req.body;
+    const user = await User.findOne({ emailId });
 
     if (!user) {
       return res.status(401).json({ error: 'Authentication Failed' });
     }
+
+    const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (!passwordMatch) {
       return res.status(401).json({ error: 'Authentication Failed' });
@@ -20,7 +21,7 @@ async function userlogin(req, res) {
     const token = jwt.sign({ userId: user._id }, process.env.secret_key, {
       expiresIn: '1h'
     });
-    return res.status(200).json({ token });
+    return res.status(200).json({ 'AccessToken':token });
   } catch (error) {
     console.log(error);
   }
@@ -37,7 +38,6 @@ async function createuser(req, res) {
     !body.mobNum ||
     !body.password
   ) {
-    console.log(`Body is: ${JSON.stringify(body, null, 2)}`);
     return res.status(400).json({ msg: 'All Fields are required..' });
   }
 

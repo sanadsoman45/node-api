@@ -25,7 +25,6 @@ async function deleteUserById(req, res) {
 
 
 module.exports = {
-  // handlegetAllUsers,
   getUserById,
   updateuserById,
   deleteUserById,
