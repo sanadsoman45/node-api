@@ -5,12 +5,15 @@ const { connectMongoDb } = require('./connection');
 const { logRequest } = require('./middlewares/logrequest');
 const compression = require('compression');
 const helmet = require('helmet');
-const authRouter = require('./routes/authroutes');
+const authRouter = require('./routes/authRoutes');
+const { verifyToken } = require('./middlewares/authMiddleware');
+
 
 //Connection to mongo database.
 connectMongoDb().then(() => {
   console.log('Mongo Db is Connected..');
 });
+
 
 //middleware setups
 app.use(express.urlencoded({ extended: true }));
@@ -19,8 +22,12 @@ app.use(logRequest());
 app.use(helmet());
 app.use(compression());
 
-//router setup
+
+// auth router setup
 app.use('/auth', authRouter);
+
+//setting up the token verification middleware and routers of other modules
+app.use(verifyToken);
 app.use('/user', userRouter);
 
 //global error handler

@@ -1,5 +1,4 @@
 const express = require('express');
-const app = express();
 const router = express.Router();
 const {
   getAllUsers,
@@ -8,13 +7,6 @@ const {
   deleteUserById,
 } = require('../controllers/userController');
 require('dotenv').config();
-const { verifyToken } = require('../middlewares/authMiddleware');
-
-//get/create all users based on method name
-// router.route('/').get(userlogin).post(createuser);
-
-//setting up auth middleware for authorizing the users.
-router.use(verifyToken);
 
 
 router.route('/').get(getAllUsers);

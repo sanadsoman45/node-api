@@ -10,7 +10,7 @@
     "ecmaVersion": 12
   },
   "rules": {
-    "no-console": "warn",
+    "no-console": "off",
     //* Avoid Bugs
     "no-undef": "error",
     "semi": "off",

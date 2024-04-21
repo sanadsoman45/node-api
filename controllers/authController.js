@@ -2,6 +2,7 @@ const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+
 //login user
 async function userlogin(req, res) {
   try {
@@ -29,6 +30,7 @@ async function userlogin(req, res) {
 
 //register user
 async function createuser(req, res) {
+  console.log('In');
   const body = req.body;
   if (
     !body ||
